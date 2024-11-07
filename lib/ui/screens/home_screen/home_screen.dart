@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mvvm/core/constant/colors.dart';
-import 'package:mvvm/main.dart';
 import 'package:mvvm/ui/screens/home_screen/home_view_model.dart';
 import 'package:provider/provider.dart';
-import 'package:table_calendar/table_calendar.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool chooseKam = false;
+
+  cheSelectKam() {
+    setState(() {
+      chooseKam = !chooseKam;
+    });
+    // chooseKam = !chooseKam;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -75,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return _container();
                           }),
-                    )
+                    ),
 
                     // TableCalendar(
                     //   selectedDayPredicate: (day) {
@@ -126,6 +138,54 @@ class HomeScreen extends StatelessWidget {
                     //     ),
                     //   ),
                     // ),
+
+                    InkWell(
+                      onTap: () {
+                        // cheSelectKam();
+                        model.onCLick();
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(10),
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+
+                            ///
+                            /// Ternary Operators
+                            ///
+                            // color: chooseKam ? Colors.red : Colors.black),
+                            color:
+                                model.isSelected ? Colors.red : Colors.black),
+                        child: Text(
+                          "Yes",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+
+                    GestureDetector(
+                      onTap: () {
+                        // cheSelectKam();
+                        model.onCLick();
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(10),
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                            color:
+
+                                ///
+                                /// Ternary Operators
+                                ///
+                                // chooseKam ? Colors.black : Colors.red),
+                                model.isSelected ? Colors.black : Colors.red),
+                        child: Text(
+                          "No",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
