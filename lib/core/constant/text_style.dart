@@ -9,3 +9,9 @@ TextStyle style30 = GoogleFonts.mulish(
   color: whiteColor,
   fontWeight: FontWeight.bold,
 );
+
+TextStyle style16 = GoogleFonts.mulish(
+  fontSize: 16,
+  color: whiteColor,
+  fontWeight: FontWeight.bold,
+);
