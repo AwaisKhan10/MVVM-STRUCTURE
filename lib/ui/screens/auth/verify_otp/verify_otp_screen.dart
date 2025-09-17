@@ -12,7 +12,7 @@ import 'package:mvvm/ui/screens/auth/login/login_view_model.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatelessWidget {
+class VerifyOtpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -39,12 +39,34 @@ class LoginScreen extends StatelessWidget {
                   ),
                   30.verticalSpace,
                   Text(
-                    "Create Account",
+                    "Verify OTP",
                     style: style30,
                   ),
                   30.verticalSpace,
-                  const Pinput(
+                  Text(
+                    "Please enter OTP that we have sent you on sele********d123@gmail.com",
+                    style: style16.copyWith(color: greyColor),
+                  ),
+                  30.verticalSpace,
+                  Pinput(
+                    keyboardType: TextInputType.number,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    length: 6,
+                    obscureText: true,
+                    obscuringCharacter: '*', // use * instead of dot
+
+                    obscuringWidget: const Text(
+                      '*',
+                      style: TextStyle(
+                        fontSize: 20, // adjust size
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white, // match your style
+                      ),
+                    ),
+
+                    onSubmitted: (value) {},
                     defaultPinTheme: PinTheme(
+                      textStyle: style16,
                       width: 56,
                       height: 60,
                       decoration: BoxDecoration(
@@ -55,74 +77,14 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  50.verticalSpace,
-                  TextFormField(
-                    style: style16,
-                    decoration: authFieldDecoration.copyWith(
-                        labelText: "Full Name",
-                        suffixIcon: Image.asset(
-                          "$iconsAssets/tick-circle.png",
-                          scale: 4,
-                        ),
-                        prefixIcon: Image.asset(
-                          "$iconsAssets/user.png",
-                          scale: 4,
-                        )),
-                  ),
-                  30.verticalSpace,
-
-                  ///
-                  /// Email
-                  ///
-                  TextFormField(
-                    style: style16,
-                    decoration: authFieldDecoration.copyWith(
-                        labelText: "Email",
-                        suffixIcon: Image.asset(
-                          "$iconsAssets/tick-circle.png",
-                          scale: 4,
-                        ),
-                        prefixIcon: Image.asset(
-                          "$iconsAssets/email.png",
-                          scale: 4,
-                        )),
-                  ),
-                  30.verticalSpace,
-
-                  ///
-                  /// Password
-                  ///
-                  TextFormField(
-                    style: style16,
-                    obscureText: model.isSelect,
-                    decoration: authFieldDecoration.copyWith(
-                        labelText: "Password",
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            model.onClick();
-                          },
-                          child: Icon(
-                            model.isSelect
-                                ? Icons.visibility_off
-                                : Icons.visibility,
-                            color: greyColor,
-                          ),
-                        ),
-                        prefixIcon: Image.asset(
-                          "$iconsAssets/email.png",
-                          scale: 4,
-                        )),
-                  ),
-                  30.verticalSpace,
+                  40.verticalSpace,
 
                   ///
                   /// Custom Button
                   ///
                   CustomButton(
-                    text: "Create New Account",
+                    text: "Verify Otp",
                     onTap: () {},
-                    boxColor: Colors.black,
-                    textColor: greenColor,
                   ),
                   30.verticalSpace,
 

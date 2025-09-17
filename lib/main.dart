@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:mvvm/core/constant/colors.dart';
 import 'package:mvvm/ui/screens/auth/login/login_screen.dart';
+import 'package:mvvm/ui/screens/auth/verify_otp/verify_otp_screen.dart';
 import 'package:mvvm/ui/screens/home_screen/home_screen.dart';
 import 'package:mvvm/ui/screens/splash_screen.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: LoginScreen(),
+        home: VerifyOtpScreen(),
       ),
     );
   }
