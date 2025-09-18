@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mvvm/core/constant/colors.dart';
+import 'package:mvvm/core/constant/text_style.dart';
 import 'package:mvvm/ui/custom_widget/custom_onbaording.dart';
+import 'package:mvvm/ui/screens/auth/login/login_screen.dart';
 import 'package:mvvm/ui/screens/onbaording/onboarind_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -17,15 +20,36 @@ class OnbaordingScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
-                child: PageView.builder(
-                  controller: value.pageController,
-                  itemCount: value.items.length,
-                  onPageChanged: value.onPageChanged,
-                  itemBuilder: (context, index) {
-                    return CustomOnboaring(
-                      onbaordingItem: value.items[index],
-                    );
-                  },
+                child: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    PageView.builder(
+                      controller: value.pageController,
+                      itemCount: value.items.length,
+                      onPageChanged: value.onPageChanged,
+                      itemBuilder: (context, index) {
+                        return CustomOnboaring(
+                          onbaordingItem: value.items[index],
+                        );
+                      },
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 60, horizontal: 20),
+                      child: TextButton(
+                          onPressed: () {
+                            Get.to(() => LoginScreen());
+                          },
+                          child: Text(
+                            "Skip",
+                            style: style16.copyWith(
+                                color: primaryColor,
+                                decorationThickness: 3,
+                                decoration: TextDecoration.underline,
+                                fontWeight: FontWeight.bold),
+                          )),
+                    )
+                  ],
                 ),
               ),
               Padding(

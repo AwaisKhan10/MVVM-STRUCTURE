@@ -9,7 +9,6 @@ import 'package:mvvm/core/constant/text_style.dart';
 import 'package:mvvm/ui/custom_widget/buttons/custom_button.dart';
 import 'package:mvvm/ui/custom_widget/buttons/soacial_button.dart';
 import 'package:mvvm/ui/screens/auth/login/login_view_model.dart';
-import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -39,22 +38,10 @@ class LoginScreen extends StatelessWidget {
                   ),
                   30.verticalSpace,
                   Text(
-                    "Create Account",
+                    "Welcome Back",
                     style: style30,
                   ),
-                  30.verticalSpace,
-                  const Pinput(
-                    defaultPinTheme: PinTheme(
-                      width: 56,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                              width: 2, color: greenColor), // underline only
-                        ),
-                      ),
-                    ),
-                  ),
+
                   50.verticalSpace,
                   TextFormField(
                     style: style16,
