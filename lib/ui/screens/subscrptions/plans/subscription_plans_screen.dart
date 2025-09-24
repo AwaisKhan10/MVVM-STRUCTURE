@@ -69,7 +69,7 @@ _subScriptionCards(
     },
     child: Container(
       padding: EdgeInsets.all(10),
-      margin: EdgeInsets.only(top: 20),
+      margin: EdgeInsets.only(top: 20, left: 20, right: 20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
