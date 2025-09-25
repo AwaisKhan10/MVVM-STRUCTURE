@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:mvvm/core/constant/text_style.dart';
 import 'package:mvvm/ui/screens/home_screen/home_view_model.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart';
@@ -9,32 +10,48 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (BuildContext context) => HomeViewModel()..initialVideo(0),
+      create: (BuildContext context) => HomeViewModel(),
       child: Consumer<HomeViewModel>(
         builder: (context, model, child) => Scaffold(
           ///
           /// Start Body
           ///
           body: PageView.builder(
-              itemCount: model.videos.length,
+              scrollDirection: Axis.vertical,
               controller: model.pageController,
-              onPageChanged: (index) {
-                model.initialVideo(index);
-              },
+              itemCount: model.videoslist.length,
               itemBuilder: (context, index) {
-                return model.videoController != null &&
-                        model.videoController!.value.isInitialized
-                    ? SizedBox.expand(
-                        child: FittedBox(
-                          fit: BoxFit.cover,
-                          child: SizedBox(
-                            width: model.videoController!.value.size.width,
-                            height: model.videoController!.value.size.height,
-                            child: VideoPlayer(model.videoController!),
+                return SizedBox.expand(
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: SizedBox(
+                      width: model.videoController!.value.size.width,
+                      height: model.videoController!.value.size.height,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          VideoPlayer(
+                            model.videoController!,
                           ),
-                        ),
-                      )
-                    : const Center(child: CircularProgressIndicator());
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "AWAIS KHAN",
+                                style: style30,
+                              ),
+                              Text(
+                                "AWAIS KHAN",
+                                style: style30,
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                );
               }),
         ),
       ),

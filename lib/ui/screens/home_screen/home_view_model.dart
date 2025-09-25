@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, curly_braces_in_flow_control_structures
 
 import 'package:flutter/widgets.dart';
 import 'package:mvvm/core/view_model/base_view_model.dart';
@@ -14,22 +14,24 @@ class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  HomeViewModel() {
+    videos();
+  }
+
   /// List of videos (TikTok style feed)
-  final List<String> videos = [
+  final List<String> videoslist = [
     "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
-    "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
-    "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+    "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
+    "https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4",
   ];
 
-  initialVideo(int index) async {
-    videoController?.dispose(); // free old controller
-
-    videoController = VideoPlayerController.network(videos[index]);
-
-    await videoController!.initialize();
-    videoController!.setLooping(true);
+  videos() async {
+    for (var url in videoslist) {
+      videoController = VideoPlayerController.networkUrl(Uri.parse(url));
+      await videoController!.initialize();
+      videoController!.setLooping(true);
+    }
     videoController!.play();
-
     notifyListeners();
   }
 }
