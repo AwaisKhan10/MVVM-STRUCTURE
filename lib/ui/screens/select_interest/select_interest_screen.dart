@@ -36,6 +36,10 @@ class SelectInterestScreen extends StatelessWidget {
                 ),
                 30.verticalSpace,
                 TextFormField(
+                  onChanged: (value) =>
+                      model.setSearchQuery(value), // 👈 filter trigger
+                  style: style16,
+                  controller: model.searchController,
                   decoration: searchFieldDecoration.copyWith(
                       hintText: "Search",
                       prefixIcon: const Icon(
@@ -48,47 +52,31 @@ class SelectInterestScreen extends StatelessWidget {
                   children: List.generate(
                     model.selectedInterests.length,
                     (index) => CustomInterestButton(
-                      text: model.selectedInterests[index],
+                      text: " ${model.selectedInterests[index]}", // number wise
+                      index: index,
                       onTap: () {
-                        model.onClick(index);
+                        model.onClick(
+                            model.selectedInterests[index]); // deselect
                       },
-                      isSelected: model.isSelected(
-                        model.selectedInterests[index],
-                      ),
+                      isSelected: true, // upar wale hamesha selected
                     ),
                   ),
                 ),
                 30.verticalSpace,
-
                 Text(
                   "Select Interests",
                   style: style16,
                 ),
                 30.verticalSpace,
-                // ListView.builder(
-                //     itemCount: model.interests.length,
-                //     itemBuilder: (context, index) {
-                //       return CustomInterestButton(
-                //         text: model.interests[index],
-                //         onTap: () {
-                //           // Handle tap for each interest
-                //           print('Selected: ${model.interests[index]}');
-                //         },
-                //       );
-                //     }),
-
-                // Generate buttons dynamically
                 Wrap(
                   children: List.generate(
-                    model.interests.length,
+                    model.filteredInterests.length,
                     (index) => CustomInterestButton(
-                      text: model.interests[index],
+                      text: model.filteredInterests[index],
                       onTap: () {
-                        model.onClick(index);
+                        model.onClick(model.interests[index]); // select
                       },
-                      isSelected: model.isSelected(
-                        model.interests[index],
-                      ),
+                      isSelected: false, // neeche wale default not selected
                     ),
                   ),
                 ),

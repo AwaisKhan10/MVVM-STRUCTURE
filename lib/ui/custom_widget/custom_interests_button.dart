@@ -6,11 +6,13 @@ class CustomInterestButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final bool isSelected;
+  final int? index;
 
   const CustomInterestButton({
     required this.text,
     required this.onTap,
     required this.isSelected,
+    this.index,
     super.key,
   });
 
@@ -29,12 +31,49 @@ class CustomInterestButton extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(35),
         ),
-        child: Text(
-          text,
-          style: style16.copyWith(
-            color: isSelected ? lightGreenColor : whiteColor,
-          ),
-        ),
+        constraints: const BoxConstraints(minWidth: 0), // 👈 shrink possible
+        child: isSelected
+            ? Row(
+                mainAxisSize: MainAxisSize.min, // 👈 wrap content
+                children: [
+                  CircleAvatar(
+                    radius: 14,
+                    backgroundColor: lightGreenColor,
+                    child: Text(
+                      index != null ? "${index! + 1}" : "",
+                      style: style16.copyWith(fontSize: 12),
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  Text(
+                    text,
+                    style: style16.copyWith(
+                      color: isSelected ? lightGreenColor : whiteColor,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  const CircleAvatar(
+                    radius: 14,
+                    backgroundColor: greyColor,
+                    child: Icon(
+                      Icons.remove,
+                      color: Colors.black,
+                      size: 16,
+                    ),
+                  ),
+                ],
+              )
+            : Row(
+                mainAxisSize: MainAxisSize.min, // 👈 wrap content
+                children: [
+                  Text(
+                    text,
+                    style: style16.copyWith(
+                      color: isSelected ? lightGreenColor : whiteColor,
+                    ),
+                  ),
+                ],
+              ),
       ),
     );
   }
