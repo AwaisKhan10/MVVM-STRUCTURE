@@ -42,6 +42,7 @@ dependencies:
   pinput: ^5.0.2
   smooth_page_indicator: ^1.2.1
   video_player: ^2.10.0
+  flutter_slider_drawer: ^3.0.2
 
 
 dev_dependencies:
