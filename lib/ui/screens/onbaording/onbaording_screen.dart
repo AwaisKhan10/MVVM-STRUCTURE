@@ -5,6 +5,7 @@ import 'package:mvvm/core/constant/text_style.dart';
 import 'package:mvvm/ui/custom_widget/custom_onbaording.dart';
 import 'package:mvvm/ui/screens/auth/login/login_screen.dart';
 import 'package:mvvm/ui/screens/onbaording/onboarind_view_model.dart';
+import 'package:mvvm/ui/screens/subscrptions/plans/subscription_plans_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -38,7 +39,7 @@ class OnbaordingScreen extends StatelessWidget {
                           vertical: 60, horizontal: 20),
                       child: TextButton(
                           onPressed: () {
-                            Get.to(() => LoginScreen());
+                            Get.to(() => SubscriptionPlansScreen());
                           },
                           child: Text(
                             "Skip",

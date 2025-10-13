@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/utils.dart';
 import 'package:mvvm/core/constant/auth_field_decoration.dart';
 import 'package:mvvm/core/constant/colors.dart';
 import 'package:mvvm/core/constant/string.dart';
@@ -9,6 +11,7 @@ import 'package:mvvm/core/constant/text_style.dart';
 import 'package:mvvm/ui/custom_widget/buttons/custom_button.dart';
 import 'package:mvvm/ui/custom_widget/buttons/soacial_button.dart';
 import 'package:mvvm/ui/screens/auth/login/login_view_model.dart';
+import 'package:mvvm/ui/screens/home_screen/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -107,7 +110,9 @@ class LoginScreen extends StatelessWidget {
                   ///
                   CustomButton(
                     text: "Create New Account",
-                    onTap: () {},
+                    onTap: () {
+                      Get.offAll(MyHomePage());
+                    },
                     boxColor: Colors.black,
                     textColor: greenColor,
                   ),

@@ -2,9 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/route_manager.dart';
 import 'package:mvvm/core/constant/colors.dart';
 import 'package:mvvm/core/constant/string.dart';
 import 'package:mvvm/core/constant/text_style.dart';
+import 'package:mvvm/ui/custom_widget/buttons/custom_button.dart';
+import 'package:mvvm/ui/screens/select_interest/select_interest_screen.dart';
 import 'package:mvvm/ui/screens/subscrptions/plans/subscription_plans_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -47,6 +51,15 @@ class SubscriptionPlansScreen extends StatelessWidget {
                     price: 'usd/month',
                     value: 2),
                 20.verticalSpace,
+                CustomButton(
+                  text: "Continue To Checkout",
+                  onTap: () {
+                    Get.to(SelectInterestScreen());
+                  },
+                  boxColor: greenColor,
+                  textColor: whiteColor,
+                ),
+                30.verticalSpace,
               ],
             ),
           ),

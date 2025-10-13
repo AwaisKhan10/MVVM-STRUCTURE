@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "369713650189",
+    "project_id": "savo-69a7c",
+    "storage_bucket": "savo-69a7c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369713650189:android:61f56dd770e3cee9e01344",
+        "android_client_info": {
+          "package_name": "com.example.mvvm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2R3Pm9NYwzBiGKIuOccbNzoa2HUj_5LU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

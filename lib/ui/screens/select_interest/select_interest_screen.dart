@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/route_manager.dart';
 import 'package:mvvm/core/constant/auth_field_decoration.dart';
 import 'package:mvvm/core/constant/colors.dart';
 import 'package:mvvm/core/constant/string.dart';
 import 'package:mvvm/core/constant/text_style.dart';
+import 'package:mvvm/ui/custom_widget/buttons/custom_button.dart';
 import 'package:mvvm/ui/custom_widget/custom_interests_button.dart';
+import 'package:mvvm/ui/screens/home_screen/home_screen.dart';
 import 'package:mvvm/ui/screens/select_interest/select_interest_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -80,6 +84,16 @@ class SelectInterestScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                30.verticalSpace,
+                CustomButton(
+                  text: "Continue",
+                  onTap: () {
+                    Get.offAll(MyHomePage());
+                  },
+                  boxColor: greenColor,
+                  textColor: whiteColor,
+                ),
+                30.verticalSpace,
               ],
             ),
           ),
