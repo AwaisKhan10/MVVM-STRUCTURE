@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:mvvm/core/constant/colors.dart';
 import 'package:mvvm/firebase_option.dart';
+import 'package:mvvm/ui/screens/auth/sign_up_screen.dart';
 import 'package:mvvm/ui/screens/splash_screen.dart';
 
 void main() async {
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: SplashScreen(),
+        home: SignUpScreen(),
       ),
     );
   }
