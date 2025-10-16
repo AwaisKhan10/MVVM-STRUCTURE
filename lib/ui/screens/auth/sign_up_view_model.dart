@@ -33,14 +33,26 @@ class SignupViewModel extends BaseViewModel {
       return;
     }
 
+    if (!(appUser.email ?? '').contains('@')) {
+      Get.snackbar("Error", "Please enter a valid email");
+      return;
+    }
+
+    if ((appUser.password ?? '').length < 6) {
+      Get.snackbar("Error", "Password should be at least 6 characters");
+      return;
+    }
+
     setState(ViewState.busy);
     try {
       final result = await authService.registerUser(appUser);
       print("@SignupViewModel register result=> ${result.toString()}");
 
-      if (result != null) {
+      if (result != null && result.user != null) {
         Get.snackbar("Success", "Your account was registered successfully");
         Get.to(() => LoginScreen());
+      } else {
+        Get.snackbar("Error", "Registration failed. Please try again.");
       }
     } catch (e) {
       Get.snackbar("Error", e.toString());
